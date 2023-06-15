@@ -11,11 +11,9 @@ export class AppComponent {
   public token: string = '';
   public dashboardId: string = '';
 
-  constructor(private activatedRoute: ActivatedRoute) {
-  }
-
-  ngOnInit(){
-    this.token = this.activatedRoute.snapshot.paramMap.get('token') || '';
-    this.dashboardId = this.activatedRoute.snapshot.paramMap.get('dashboardId') || '';
+  constructor() {
+    const urlParams = new URLSearchParams(location.search);
+    this.token = urlParams.get('token') || '';
+    this.dashboardId = urlParams.get('dashboardId') || '';
   }
 }
